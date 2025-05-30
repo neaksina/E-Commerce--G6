@@ -7,7 +7,9 @@ export class Customer extends AbstractUser {
         super(username, email, password);
         this.shippingAddress = shippingAddress;
     }
-
+    getShippingAddress():string{
+        return this.shippingAddress;
+    }
     public login(): string {
         return `${this.username} logged in.`;
     }

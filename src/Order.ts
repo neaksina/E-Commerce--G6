@@ -32,4 +32,5 @@ export class Order {
     public viewTotalPrice(): number {
         return this.totalPrice;
     }
+    
 }

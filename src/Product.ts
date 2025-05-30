@@ -11,10 +11,11 @@ export class Product {
     public discounts: Discount[] = [];
     public reviews: Review[] = []; // Ensure this is public and initialized
 
-    constructor(name: string, price: number, stockQuantity: number, category: Category) {
-        this.name = name;
-        this.price = price;
-        this.stockQuantity = stockQuantity;
-        this.category = category;
-    }
+constructor(name: string, price: number, stockQuantity: number, category: Category) {
+    this.name = name;
+    this.price = price;
+    this.stockQuantity = stockQuantity;
+    this.category = category;
+    this.category.getProducts().push(this); // Ensure product is added to category
+}
 }
