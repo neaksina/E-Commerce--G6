@@ -15,35 +15,34 @@ import { Seller } from "./seller";
 import { Shipment } from "./shipment";
 
 // 🖥️ === SYSTEM HEADER ===
-console.log("=".repeat(60));
-console.log("         E-COMMERCE SYSTEM DEMONSTRATION");
-console.log("=".repeat(60));
-console.log();
-
-// 🗂️ === 1. CREATING CATEGORIES ===
+console.log("=".repeat(60)); 
+console.log("         E-COMMERCE SYSTEM DEMONSTRATION"); 
+console.log("=".repeat(60)); 
+console.log(); 
+// === 1. CREATING CATEGORIES === 
 console.log("1. 📁 CREATING CATEGORIES:");
-console.log("-".repeat(30));
-const electronicsCategory = new Category(1, "Electronics", "Electronic devices and gadgets");
-const clothingCategory = new Category(2, "Clothing", "Apparel and fashion items");
-console.log(electronicsCategory.toString());
-console.log(clothingCategory.toString());
-console.log();
+console.log("-".repeat(30)); 
+const electronicsCategory = new Category(1, "Electronics", "Electronic devices and gadgets"); 
+const clothingCategory = new Category(2, "Clothing", "Apparel and fashion items"); 
+console.log(electronicsCategory.toString());  
+console.log(clothingCategory.toString()); 
+console.log(); 
 
 // 🛒 === 2. ADDING PRODUCTS TO CATEGORIES ===
-console.log("2. 🧩 ADDING PRODUCTS TO CATEGORIES:");
-console.log("-".repeat(30));
-const laptop = new Product("Laptop", 1500, 10, electronicsCategory);
-const smartphone = new Product("Smartphone", 800, 15, electronicsCategory);
-const tshirt = new Product("T-Shirt", 20, 50, clothingCategory);
-const jeans = new Product("Jeans", 40, 30, clothingCategory);
+console.log("2. 🧩 ADDING PRODUCTS TO CATEGORIES:"); 
+console.log("-".repeat(30)); 
+const laptop = new Product("Laptop", 1500, 10, electronicsCategory); 
+const smartphone = new Product("Smartphone", 800, 15, electronicsCategory); 
+const tshirt = new Product("T-Shirt", 20, 50, clothingCategory); 
+const jeans = new Product("Jeans", 40, 30, clothingCategory); 
 
-electronicsCategory.addProduct(laptop);
-electronicsCategory.addProduct(smartphone);
-clothingCategory.addProduct(tshirt);
-clothingCategory.addProduct(jeans);
+electronicsCategory.addProduct(laptop); 
+electronicsCategory.addProduct(smartphone); 
+clothingCategory.addProduct(tshirt); 
+clothingCategory.addProduct(jeans); 
 console.log();
 
-// 📃 === 3. LISTING PRODUCTS IN EACH CATEGORY ===
+// 📃 === 3. LISTING PRODUCTS IN EACH CATEGORY === 
 console.log("3. 📦 LISTING PRODUCTS IN EACH CATEGORY:");
 console.log("-".repeat(30));
 console.log(`Products in ${electronicsCategory.name}:`);
@@ -113,15 +112,15 @@ customer.setShippingAddress(address);
 const order = new Order(1, 12, Delivery.EXPRESS, "ABA");
 
 // 🥣 Step 4: Create products
-const rice = new Product("Rice", 2.5, 50);
-const fish = new Product("Fish", 4, 20);
+let usbs = new Product("Rice", 2.5, 50);
+const computers = new Product("computers", 4, 20);
 
 // 🛍️ Step 5: Add items to order
-const item1 = new OrderItem(3, rice); // 3 x 2.5 = 7.5
-const item2 = new OrderItem(2, fish); // 2 x 4 = 8
+const item1 = new OrderItem(3, usbs); // 3 x 2.5 = 7.5
+const item2 = new OrderItem(2, computers); // 2 x 4 = 8
 
 // 📉 Step 6: Update stock and add items
-if (rice.updateStock(-3) && fish.updateStock(-2)) {
+if (usbs.updateStock(-3) && computers.updateStock(-2)) {
   order.addItem(item1);
   order.addItem(item2);
 
