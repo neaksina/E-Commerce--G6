@@ -1,5 +1,5 @@
-// 📦 === IMPORTS ===
-import { AbstractUser } from "./abstract-user";
+
+ import { AbstractUser } from "./abstract-user";
 import { Address } from "./address";
 import { Admin } from "./admin";
 import { Category } from "./category";
@@ -157,19 +157,19 @@ console.log("\n8. 🧑‍💼 SELLER FUNCTIONALITY:");
 console.log("-".repeat(30));
 
 // 👨‍🌾 Step 1: Create seller
-const seller = new Seller("kim", "kim@example.com", "sellerpass");
+const seller = new Seller("ratana", "ratana@example.com", "sellerpass");
 
 // 🍌 Step 2: Add products
-const mango = new Product("Mango", 1.5, 100);
-const banana = new Product("Banana", 0.8, 120);
-seller.addProduct(mango);
-seller.addProduct(banana);
+const usb = new Product("USB", 1.5, 100);
+const computer = new Product("Computer", 0.8, 120);
+seller.addProduct(usb);
+seller.addProduct(computer);
 
 // 📦 Step 3: View stock
 seller.getStock();
 
 // ❌ Step 4: Remove product
-seller.removeProduct("Mango");
+seller.removeProduct("USB");
 
 // 📦 Step 5: View stock again
 seller.getStock();
@@ -181,12 +181,12 @@ console.log("-".repeat(30));
 const shipmentSeller = new Seller("sochea", "sochea@example.com", "shipperpass");
 
 // 🍊 Step 2: Add a product
-const orange = new Product("Orange", 1.2, 80);
-shipmentSeller.addProduct(orange);
+const shirt = new Product("T-shirt", 1.2, 80);
+shipmentSeller.addProduct(shirt);
 
 // 🧾 Step 3: Create an order and add product
 const shipmentOrder = new Order(2, 15, Delivery.STANDARD, "Wing");
-const shipmentItem = new OrderItem(5, orange); // 5 x 1.2 = 6
+const shipmentItem = new OrderItem(5,shirt); // 5 x 1.2 = 6
 shipmentOrder.addItem(shipmentItem);
 
 // ✅ Step 4: Confirm the order
