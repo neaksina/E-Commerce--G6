@@ -11,7 +11,6 @@ export class Customer extends AbstractUser {
   constructor(username: string, email: string, password: string) {
     super(username, email, password);
   }
-
   getUserType(): string {
     return "Customer";
   }

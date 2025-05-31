@@ -5,7 +5,6 @@ export abstract class AbstractUser {
     public email: string,
     public password: string
   ) {}
-
   // Abstract method that must be implemented by subclasses
   abstract getUserType(): string;
 

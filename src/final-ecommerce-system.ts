@@ -49,7 +49,6 @@ abstract class AbstractUser {
     public password: string
   ) {}
 }
-
 // Admin Class
 class Admin extends AbstractUser {
   constructor(username: string, email: string, password: string) {

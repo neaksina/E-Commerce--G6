@@ -10,6 +10,7 @@ export class OrderItem {
   getSubTotal(): number {
     return this.quantity * this.product.price;
   }
+  
 
   toString(): string {
     return `${this.quantity}x ${this.product.name} = $${this.getSubTotal().toFixed(2)}`;

@@ -27,8 +27,6 @@ export class Payment {
     this.status = PaymentStatus.REFUNDED;
     return true;
   }
-
-
   toString(): string {
     return `Payment ${this.id}: $${this.amount.toFixed(2)} via ${this.method} (${this.status})`;
   }

@@ -8,6 +8,7 @@ export class Seller extends AbstractUser {
     super(username, email, password);
   }
 
+  
   getUserType(): string {
     return "Seller";
   }

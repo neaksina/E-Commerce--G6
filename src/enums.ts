@@ -10,7 +10,6 @@ export enum DiscountType {
   PERCENTAGE = "PERCENTAGE",
   FIXED_AMOUNT = "FIXED_AMOUNT"
 }
-
 export enum Delivery {
   STANDARD = "STANDARD",
   EXPRESS = "EXPRESS",

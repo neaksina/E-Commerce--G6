@@ -8,7 +8,6 @@ export class Discount {
     public validTo: Date,
     public value: number
   ) {}
-
   calculateDiscount(amount: number): number {
     if (!this.isValid()) {
       console.log(`Discount ${this.id} is not valid`);

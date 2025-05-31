@@ -50,6 +50,7 @@ export class Order {
     console.log(`Order ${this.id} cancelled`);
   }
 
+  
   toString(): string {
     return `Order ${this.id}: ${this.orderItems.length} items, Total: $${this.calculateTotal().toFixed(2)} (${this.status})`;
   }

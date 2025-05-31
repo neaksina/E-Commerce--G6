@@ -10,6 +10,7 @@ export class Review {
       throw new Error("Rating must be between 1 and 5");
     }
   }
+  
 
   toString(): string {
     return `Review: ${this.rate}/5 stars - "${this.comment}"`;

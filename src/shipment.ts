@@ -13,6 +13,7 @@ export class Shipment {
     return this.price;
   }
 
+  
   updateStatus(status: string): boolean {
     console.log(`Shipment ${this.id} status updated to: ${status}`);
     if (status === "DELIVERED") {

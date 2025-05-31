@@ -7,6 +7,7 @@ export class Product {
     public stockQuantity: number,
     public category?: Category
   ) {}
+  
 
   updateStock(quantity: number): boolean {
     if (this.stockQuantity + quantity < 0) {

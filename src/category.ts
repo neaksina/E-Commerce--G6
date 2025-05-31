@@ -8,7 +8,6 @@ export class Category {
     public name: string,
     public description: string
   ) {}
-
   addProduct(product: Product): void {
     this.products.push(product);
     console.log(`Product ${product.name} added to category ${this.name}`);
