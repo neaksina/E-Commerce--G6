@@ -8,7 +8,6 @@ export class Order {
   public shipments: Shipment[] = [];
   public payment?: Payment;
   public status: OrderStatus;
-
   constructor(
     public id: number,
     public customerId: number,
