@@ -1,5 +1,4 @@
 import { AddressType } from './enums';
-
 export class Address {
   constructor(
     public id: number,
