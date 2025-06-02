@@ -10,22 +10,22 @@ export class Admin extends AbstractUser{
   }
 
   viewStock(): string {
-    console.log(`Admin ${this.username} viewing stock levels....`);
+    console.log("Admin " + this.username + " viewing stock levels....");
     return "Stock report generated"; 
   }
 
-  addProduct(product: Product): string{
-    console.log(`Admin ${this.username} added product: ${product.name}`);
-    return `Product ${product.name} added successfully`;
+  addProduct(product: Product): string {
+    console.log("Admin " + this.username + " added product: " + product.name);
+    return "Product " + product.name + " added successfully";
   }
 
-  deleteProduct(productName: string): string{
-    console.log(`Admin ${this.username} deleted product: ${productName}`);
-    return `Product ${productName} deleted successfully`;
+  deleteProduct(productName: string): string {
+    console.log("Admin " + this.username + " deleted product: " + productName);
+    return "Product " + productName + " deleted successfully";
   }
 
-  cancelProduct(productName: string): string{
-     console.log(`Admin ${this.username} cancelled product: ${productName}`);
-     return `Product ${productName} cancelled successfully`;
+  cancelProduct(productName: string): string {
+    console.log("Admin " + this.username + " cancelled product: " + productName);
+    return "Product " + productName + " cancelled successfully";
   }
 }

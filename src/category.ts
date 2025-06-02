@@ -1,5 +1,6 @@
 import { Product } from './product'; 
-export class Category{
+
+export class Category {
   private products: Product[] = [];
 
   constructor(
@@ -7,13 +8,14 @@ export class Category{
     public name: string,
     public description: string
   ) {}
+
   addProduct(product: Product): void {
     this.products.push(product);
-    console.log(`Product ${product.name} added to category ${this.name}`);
+    console.log("Product " + product.name + " added to category " + this.name);
   }
 
   getProducts(): Product[] {
-    return [...this.products]; // Return copy to prevent external modification
+    return [...this.products]; // Return a copy to prevent external modification
   }
 
   getProductCount(): number {
@@ -21,6 +23,6 @@ export class Category{
   }
 
   toString(): string {
-    return `Category: ${this.name} - ${this.description} (${this.products.length} products)`;
+    return "Category: " + this.name + " - " + this.description + " (" + this.products.length + " products)";
   }
 }
