@@ -1,6 +1,5 @@
-import { Product } from './product';
-
-export class Category {
+import { Product } from './product'; 
+export class Category{
   private products: Product[] = [];
 
   constructor(
