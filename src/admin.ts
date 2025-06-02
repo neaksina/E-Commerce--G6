@@ -11,7 +11,7 @@ export class Admin extends AbstractUser{
 
   viewStock(): string {
     console.log(`Admin ${this.username} viewing stock levels....`);
-    return "Stock report generated";
+    return "Stock report generated"; 
   }
 
   addProduct(product: Product): string{
@@ -25,7 +25,7 @@ export class Admin extends AbstractUser{
   }
 
   cancelProduct(productName: string): string{
-    console.log(`Admin ${this.username} cancelled product: ${productName}`);
-    return `Product ${productName} cancelled successfully`;
+     console.log(`Admin ${this.username} cancelled product: ${productName}`);
+     return `Product ${productName} cancelled successfully`;
   }
 }

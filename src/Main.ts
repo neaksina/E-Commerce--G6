@@ -109,7 +109,8 @@ customer.setShippingAddress(address);
 
 const order = new Order(1, 12, Delivery.EXPRESS, "ABA");
 
-let usbs = new Product("Rice", 2.5, 50);
+// 🥣 Step 4: Create products
+let usbs = new Product("Mouse", 2.5, 50);
 const computers = new Product("computers", 4, 20);
 
 const item1 = new OrderItem(3, usbs);
