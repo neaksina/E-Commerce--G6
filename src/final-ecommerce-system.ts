@@ -1,7 +1,6 @@
-// E-commerce System - Final TypeScript OOP Implementation
 
 // Enums
-enum AddressType {
+enum AddressType{
   HOME = "HOME",
   WORK = "WORK",
   BILLING = "BILLING",
@@ -26,237 +25,214 @@ enum CategoryEnum {
   CLOTHING = "CLOTHING"
 }
 
-// Address Class
+// Address class
 class Address {
-  constructor(
-    public id: number,
-    public street: string,
-    public city: string,
-    public phoneNumber: string,
-    public type: AddressType
-  ) {}
+  id: number;
+  street: string;
+  city: string;
+  phoneNumber: string;
+  type: AddressType;
+
+  constructor(id: number, street: string, city: string, phoneNumber: string, type: AddressType) {
+    this.id = id;
+    this.street = street;
+    this.city = city;
+    this.phoneNumber = phoneNumber;
+    this.type = type;
+  }
 
   getFullAddress(): string {
-    return `${this.street}, ${this.city} (${this.type}) - Phone: ${this.phoneNumber}`;
+    return this.street + ", " + this.city + " (" + this.type + ") - Phone: " + this.phoneNumber;
   }
 }
 
-// Abstract User Class
-abstract class AbstractUser {
-  constructor(
-    public username: string,
-    public email: string,
-    public password: string
-  ) {}
-}
-// Admin Class
-class Admin extends AbstractUser {
+// User base class
+class User {
+  username: string;
+  email: string;
+  password: string;
+
   constructor(username: string, email: string, password: string) {
-    super(username, email, password);
-  }
-
-  viewStock(): string {
-    console.log(`Admin ${this.username} viewing stock...`);
-    return "Stock report";
-  }
-
-  addProduct(): string {
-    console.log(`Admin ${this.username} adding product...`);
-    return "Product added";
-  }
-
-  deleteProduct(): string {
-    console.log(`Admin ${this.username} deleting product...`);
-    return "Product deleted";
-  }
-
-  cancelProduct(): string {
-    console.log(`Admin ${this.username} cancelling product...`);
-    return "Product cancelled";
+    this.username = username;
+    this.email = email;
+    this.password = password;
   }
 }
 
-// Customer Class
-class Customer extends AbstractUser {
-  public shippingAddress: string;
-  
-  constructor(username: string, email: string, password: string) {
-    super(username, email, password);
-    this.shippingAddress = "";
+// Admin class
+class Admin extends User {
+  viewStock(): void {
+    console.log("Viewing stock...");
   }
 
-  login(): string {
-    console.log(`Customer ${this.username} logging in...`);
-    return "Login successful";
+  addProduct(): void {
+    console.log("Adding product...");
   }
 
-  logout(): string {
-    console.log(`Customer ${this.username} logging out...`);
-    return "Logout successful";
-  }
-}
-
-// Seller Class
-class Seller extends AbstractUser {
-  public products: Product[] = [];
-  
-  constructor(username: string, email: string, password: string) {
-    super(username, email, password);
+  deleteProduct(): void {
+    console.log("Deleting product...");
   }
 
-  getOrders(): string {
-    console.log(`Seller ${this.username} getting orders...`);
-    return "Orders retrieved";
-  }
-
-  getStock(): string {
-    console.log(`Seller ${this.username} checking stock...`);
-    return "Stock checked";
+  cancelProduct(): void {
+    console.log("Cancelling product...");
   }
 }
 
-// Review Class
+// Customer class
+class Customer extends User {
+  shippingAddress: string = "";
+
+  login(): void {
+    console.log("Customer logged in.");
+  }
+
+  logout(): void {
+    console.log("Customer logged out.");
+  }
+}
+
+// Seller class
+class Seller extends User {
+  products: Product[] = [];
+
+  getOrders(): void {
+    console.log("Fetching seller orders...");
+  }
+
+  getStock(): void {
+    console.log("Checking seller stock...");
+  }
+}
+
+// Review class
 class Review {
-  constructor(
-    public rate: number,
-    public comment: string
-  ) {}
-}
+  rate: number;
+  comment: string;
 
-// Category Class
-class Category {
-  constructor(
-    public id: number,
-    public name: string,
-    public description: string
-  ) {}
-
-  getProducts(): Product[] {
-    return [];
+  constructor(rate: number, comment: string) {
+    this.rate = rate;
+    this.comment = comment;
   }
 }
+// Category class
+class ProductCategory {
+  id: number;
+  name: string;
+  description: string;
 
-// Product Class
+  constructor(id: number, name: string, description: string) {
+    this.id = id;
+    this.name = name;
+    this.description = description;
+  }
+}
+// Product class
 class Product {
-  constructor(
-    public name: string,
-    public price: number,
-    public stockQuantity: number,
-    public category?: Category
-  ) {}
+  name: string;
+  price: number;
+  stock: number;
+
+  constructor(name: string, price: number, stock: number) {
+    this.name = name;
+    this.price = price;
+    this.stock = stock;
+  }
 }
 
-// Discount Class
+// Discount class
 class Discount {
-  constructor(
-    public id: number,
-    public type: DiscountType,
-    public validFrom: Date,
-    public validTo: Date,
-    public value: number
-  ) {}
+  type: DiscountType;
+  value: number;
 
-  calculateDiscount(): number {
-    return 0;
+  constructor(type: DiscountType, value: number) {
+    this.type = type;
+    this.value = value;
   }
 
-  isValid(): boolean {
-    return true;
+  applyDiscount(price: number): number {
+    if (this.type === "PERCENTAGE") {
+      return price - (price * this.value) / 100;
+    } else {
+      return price - this.value;
+    }
   }
 }
 
-// OrderItem Class
+// OrderItem class
 class OrderItem {
-  constructor(
-    public quantity: string,
-    public orderId: number
-  ) {}
+  productName: string;
+  quantity: number;
+
+  constructor(productName: string, quantity: number) {
+    this.productName = productName;
+    this.quantity = quantity;
+  }
 }
 
-// Order Class
+// Order class
 class Order {
-  constructor(
-    public createOrder: Order,
-    public cancelItem: Order,
-    public reviewProduct: Order,
-    public viewTotalPrice: Order,
-    public deliveryMethod: Delivery,
-    public status: string,
-    public invoice: string,
-    public totalPrice: number
-  ) {}
+  items: OrderItem[];
+  deliveryMethod: Delivery;
+  totalPrice: number;
+
+  constructor(items: OrderItem[], deliveryMethod: Delivery, totalPrice: number) {
+    this.items = items;
+    this.deliveryMethod = deliveryMethod;
+    this.totalPrice = totalPrice;
+  }
+
+  getOrderSummary(): void {
+    console.log("Order contains " + this.items.length + " items. Total: $" + this.totalPrice);
+  }
 }
 
-// Payment Class
+// Payment class
 class Payment {
-  constructor(
-    public id: number,
-    public amount: string,
-    public method: string,
-    public status: string
-  ) {}
+  amount: number;
 
-  processPayment(): boolean {
-    return true;
+  constructor(amount: number) {
+    this.amount = amount;
   }
 
-  refund(): boolean {
-    return true;
+  process(): void {
+    console.log("Payment of $" + this.amount + " processed.");
   }
 }
-
-// Shipment Class
+// Shipment class
 class Shipment {
-  constructor(
-    public id: number,
-    public orderId: number,
-    public sellerId: number,
-    public shippedAt: Date,
-    public deliveredAt: Date,
-    public estimatedDelivery: Date,
-    public price: number
-  ) {}
+  orderId: number;
+  deliveryFee: number;
 
-  calculateDeliveryFee(): number {
-    return this.price;
+  constructor(orderId: number, deliveryFee: number) {
+    this.orderId = orderId;
+    this.deliveryFee = deliveryFee;
   }
 
-  getItems(): any[] {
-    return [];
-  }
-
-  updateStatus(status: string): boolean {
-    return true;
+  track(): void {
+    console.log("Tracking shipment for order #" + this.orderId);
   }
 }
 
-// Main function to demonstrate the system
+// Main function to run the system
 function main(): void {
-  console.log("E-commerce System Demonstration");
-  
-  // Create instances of each class to demonstrate the system
-  const admin = new Admin("admin", "admin@example.com", "password");
-  const customer = new Customer("customer", "customer@example.com", "password");
-  const seller = new Seller("seller", "seller@example.com", "password");
-  
-  console.log(`Admin created: ${admin.username}`);
-  console.log(`Customer created: ${customer.username}`);
-  console.log(`Seller created: ${seller.username}`);
-  
-  // Demonstrate admin operations
+  const admin = new Admin("adminUser", "admin@email.com", "123456");
+  const customer = new Customer("johnDoe", "john@email.com", "password");
+  const seller = new Seller("sellerName", "seller@email.com", "pass123");
+
+  console.log("--- Admin Actions ---");
   admin.viewStock();
   admin.addProduct();
-  admin.deleteProduct();
-  admin.cancelProduct();
-  
-  // Demonstrate customer operations
+
+  console.log("--- Customer Actions ---");
   customer.login();
-  customer.logout();
-  
-  // Demonstrate seller operations
-  seller.getOrders();
+
+  console.log("--- Seller Actions ---");
   seller.getStock();
+
+  console.log("--- Create Order ---");
+  const item1 = new OrderItem("USB Drive", 2);
+  const order = new Order([item1], Delivery.STANDARD, 100);
+  order.getOrderSummary();
 }
 
-// Run the demonstration
 main();
