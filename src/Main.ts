@@ -112,7 +112,7 @@ customer.setShippingAddress(address);
 const order = new Order(1, 12, Delivery.EXPRESS, "ABA");
 
 // 🥣 Step 4: Create products
-let usbs = new Product("Rice", 2.5, 50);
+let usbs = new Product("Mouse", 2.5, 50);
 const computers = new Product("computers", 4, 20);
 
 // 🛍️ Step 5: Add items to order
